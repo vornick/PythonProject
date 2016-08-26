@@ -178,33 +178,38 @@ def port_chooser(TypeChoice):
 
 def main_menu():
     print ("\n===== Измерение производительности TCP v. 1.1 ====\n")
-    main_input = input(
-        "Введите номер теста:\n"
-        "1: Полный тест L3\n"
-        "2: Полный тест МСЭ\n"
-        "3: Полный тест КК\n"
-        "4: Сокращенный тест L3 (256, 1280, 1518)\n"
-        "5: Сокращенный тест МСЭ (256, 1280, 1518)\n"
-        "6: Сокращенный тест КК (256, 1280, 1518)\n"
-        "0: Выход\n"
-                       )
-    if main_input == "1":
-        througput_and_cc_run("L3", "long")
-    if main_input == "2":
-        througput_and_cc_run("CGW_MCE", "long")
-    if main_input == "3":
-        througput_and_cc_run("L2", "long")
-    if main_input == "4":
-        througput_and_cc_run("L3", "short")
-    if main_input == "5":
-        througput_and_cc_run("CGW_MCE", "short")
-    if main_input == "6":
-        througput_and_cc_run("L2", "short")
-    if main_input == "0":
-        sys.exit(0)
-    #else:
-    #    print("Некорректное значение")# после окончания теста происходит перезапуск с выводо этой строчки
-     #   main_menu()                    понять и исправить
-    #card_port_chooser(type)
-     #Tclscript = "C:\CGW_TCP_TEST\CGW_single(MCE)\Max_Throughput"
+    try:
+        main_input = int(input(
+            "Введите номер теста:\n"
+            "1: Полный тест L3\n"
+            "2: Полный тест МСЭ\n"
+            "3: Полный тест КК\n"
+            "4: Сокращенный тест L3 (256, 1280, 1518)\n"
+            "5: Сокращенный тест МСЭ (256, 1280, 1518)\n"
+            "6: Сокращенный тест КК (256, 1280, 1518)\n"
+            "0: Выход\n"
+        ))
+
+        if main_input == 1:
+            througput_and_cc_run("L3", "long")
+        if main_input == 2:
+            througput_and_cc_run("CGW_MCE", "long")
+        if main_input == 3:
+            througput_and_cc_run("L2", "long")
+        if main_input == 4:
+            througput_and_cc_run("L3", "short")
+        if main_input == 5:
+            througput_and_cc_run("CGW_MCE", "short")
+        if main_input == 6:
+            througput_and_cc_run("L2", "short")
+        if main_input == 0:
+                sys.exit(0)
+        elif not main_input in range(0, 7):
+            print("Введите номер теста")
+            main_menu()
+    except ValueError:
+            print("Некорректное значение, введите число от 0 до 6")# после окончания теста происходит перезапуск с выводо этой строчки
+            main_menu()                    #понять и исправить
 main_menu()
+
+
