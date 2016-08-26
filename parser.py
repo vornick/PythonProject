@@ -30,7 +30,7 @@ def initialize_stat(ParsLogResultDir, num_of_platform):
     file=EndResultDir + '\\' + res_filename
     print("Запускается сбор статистики в файл" + file)
     main(count_Of_Zero)
-    return file
+    return file, count_Of_Zero
 
 def main(count_Of_Zero):
     if not os.path.exists(EndResultDir):

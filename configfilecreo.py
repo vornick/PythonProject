@@ -1,4 +1,5 @@
 import sys, time, os, re, fileinput
+from IxiaRunner import run_ixia_wish
 
 def configfilecreator(RepPortIdClient, RepPortIdServer, RepCardIdClient, RepCardIdServer,
                       RepPortType, TestPathResult, RepFrameResult, RepLogName, Title, Template, test_case, LogResultDir):
@@ -56,11 +57,11 @@ def configfilecreator(RepPortIdClient, RepPortIdServer, RepCardIdClient, RepCard
     RepResultDir = re.sub(r"\\", RepResultDir[1:-1], '\\')
 
     print(RepResultDir)
-    #run_ixia_wish(RepResultDir, RepLogName, Title)
+    run_ixia_wish(RepResultDir, RepLogName, Title)
 
-    TclFile = open('RunFile.tcl', 'r')                                             #Блок тестирования создания заполненных конфигов.
-    TestResultFile = open('%s%s%s.tcl' % (Title, test_case, RepLogName), 'w' )     #При раскоменчивании надо заккоментить вызов функции
-    for allline in TclFile:                                                        #run_ixia_wish выше и переменную testcase при вызове
-        TestResultFile.write(allline)                                              #configfilecreator в функциях maxthroughput_cgw и
-    TclFile.close()                                                                #concurrent_connections, чтобы в папке проверить корректность
-    TestResultFile.close()                                                         #созданных конфиг файлов перед их запуском на Иксии.
+    # TclFile = open('RunFile.tcl', 'r')                                             #Блок тестирования создания заполненных конфигов.
+    # TestResultFile = open('%s%s%s.tcl' % (Title, test_case, RepLogName), 'w' )     #При раскоменчивании надо заккоментить вызов функции
+    # for allline in TclFile:                                                        #run_ixia_wish выше и переменную testcase при вызове
+    #     TestResultFile.write(allline)                                              #configfilecreator в функциях maxthroughput_cgw и
+    # TclFile.close()                                                                #concurrent_connections, чтобы в папке проверить корректность
+    # TestResultFile.close()                                                         #созданных конфиг файлов перед их запуском на Иксии.
