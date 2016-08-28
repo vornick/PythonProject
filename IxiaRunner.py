@@ -3,8 +3,19 @@ import sys, time, os, re, fileinput, csv, openpyxl
 global Ixiawish
 Ixiawish = r'C:\Program Files (x86)\Ixia\Tcl\8.5.12.0\bin\wish85.exe'
 
+def file_searcher():
+    for filenames in os.walk('%s\%s' % (root, folder_name)):
+        for filename in filenames:
+            if filename[-3:] == 'tcl' or filename[-3:] == 'txt' in filename:
+
+            else:
+                print "Не обнаружено тестовых скриптов"
+
+
+
 def run_ixia_wish(RepResultDir, RepLogName, Title):
     print ("Iam Worked")
+    file_searcher()
     # print ('Тест %s с размером пакета в %s выполняется\n' % (Title, RepLogName))
     # TclFile = r'RunFile.tcl'
     # process = Popen([                                               #основная функция которая запускает IxLoad, подавая ему на вход собранный файл с тестом
