@@ -1,14 +1,18 @@
 {
-	"physical_Settings_Client":	{
+
+
+	"port_settings":	{
+		"port_count": "1",
 		"?CardIdClient?": "1",
 		"?PortIdClient?": "7",
-		"?IPAdressClient?": "154.1.1.2",
-		"?GatewayClient?": "154.1.1.1"
-	},
-
-	"physical_Settings_Server": {
 		"?CardIdServer?": "2",
 		"?PortIdServer?": "7",
+
+	},
+
+	"Network_Settings": {
+		"?IPAdressClient?": "154.1.1.2",
+		"?GatewayClient?": "154.1.1.1"
 		"?IPAdressServer?": "134.1.1.2",
 		"?GatewayServer?": "134.1.1.1",
 		"?PortType?": "cooper"

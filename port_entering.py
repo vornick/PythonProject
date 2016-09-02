@@ -10,12 +10,13 @@ Ixia_settings_of_server = json_config['physical_Settings_Server']
 # frame_size = json_config['?FrameResult?']
 ports_client = Ixia_settings_of_client['?PortIdClient?']
 #    if ports [:7] == "?PortId":
-print(ports_client)
+
 
 for all_set in Ixia_settings_of_client:
     if all_set[:1] == "?":
         x = Ixia_settings_of_client[all_set]
-        print(x)
+        print(all_set + " " + x)
+
 
 
 
