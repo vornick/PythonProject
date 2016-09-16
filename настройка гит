@@ -1,7 +1,0 @@
-git config --global user.name "myname"
-git config --global user.email "my@mail.ru"
-git init
-git add -all
-git commit -m "add new project"
-git remote add origin https://github.com/vornick/PythonProject.git
-git push -u origin master

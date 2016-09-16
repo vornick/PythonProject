@@ -1,7 +1,7 @@
 #################################################
 # IxLoad ScriptGen created TCL script
 # Test1 serialized using version 6.30.0.378
-# MCEConC16 made on Jan 19 2016 19:28
+# L2Through made on Jan 20 2016 18:08
 #################################################
 
 #################################################
@@ -267,16 +267,16 @@ $my_ixNetDualPhyPlugin config \
 $Ethernet_1 childrenList.clear
 
 
-set MAC_VLAN_2 [::IxLoad new ixNetL2EthernetPlugin]
+set MAC_VLAN_1 [::IxLoad new ixNetL2EthernetPlugin]
 # ixNet objects needs to be added in the list before they are configured!
-$Ethernet_1 childrenList.appendItem -object $MAC_VLAN_2
+$Ethernet_1 childrenList.appendItem -object $MAC_VLAN_1
 
-$MAC_VLAN_2 childrenList.clear
+$MAC_VLAN_1 childrenList.clear
 
 
 set IP_1 [::IxLoad new ixNetIpV4V6Plugin]
 # ixNet objects needs to be added in the list before they are configured!
-$MAC_VLAN_2 childrenList.appendItem -object $IP_1
+$MAC_VLAN_1 childrenList.appendItem -object $IP_1
 
 $IP_1 childrenList.clear
 
@@ -287,10 +287,10 @@ $IP_1 extensionList.clear
 $IP_1 config \
 	-_Stale                                  false 
 
-$MAC_VLAN_2 extensionList.clear
+$MAC_VLAN_1 extensionList.clear
 
 
-$MAC_VLAN_2 config \
+$MAC_VLAN_1 config \
 	-_Stale                                  false 
 
 $Ethernet_1 extensionList.clear
@@ -321,7 +321,7 @@ set IP_R1 [::IxLoad new ixNetIpV4V6Range]
 $IP_1 rangeList.appendItem -object $IP_R1
 
 $IP_R1 config \
-	-count                                   130 \
+	-count                                   1 \
 	-enableGatewayArp                        false \
 	-prefix                                  16 \
 	-randomizeSeed                           50235888 \
@@ -337,16 +337,16 @@ $IP_R1 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          "154.1.1.1" \
-	-ipAddress                               "154.1.1.2" \
+	-gatewayAddress                          "1.1.1.2" \
+	-ipAddress                               "1.1.1.3" \
 	-ipType                                  "IPv4" 
 
 set MAC_R1 [$IP_R1 getLowerRelatedRange "MacRange"]
 
 $MAC_R1 config \
-	-count                                   130 \
+	-count                                   1 \
 	-enabled                                 true \
-	-mac                                     "00:9A:01:01:02:00" \
+	-mac                                     "00:01:01:01:03:00" \
 	-incrementBy                             "00:00:00:00:00:01" \
 	-netTraffic                              "Network1" \
 	-_Stale                                  false \
@@ -414,7 +414,7 @@ $Timeline1 config \
 	-standbyTime                             0 \
 	-rampDownValue                           0 \
 	-iterations                              1 \
-	-sustainTime                             130 \
+	-sustainTime                             ?TestTime? \
 	-timelineType                            0 
 
 $Activity_HTTPClient1 config \
@@ -422,10 +422,10 @@ $Activity_HTTPClient1 config \
 	-name                                    "HTTPClient1" \
 	-userIpMapping                           "1:1" \
 	-enableConstraint                        false \
-	-userObjectiveValue                      ?ConcConnect? \
-	-concurrentObjectiveBehavior             1 \
 	-constraintValue                         100 \
-	-userObjectiveType                       "concurrentConnections" \
+	-userObjectiveValue                      1000 \
+	-constraintType                          "SimulatedUserConstraint" \
+	-userObjectiveType                       "throughputMbps" \
 	-destinationIpMapping                    "Consecutive" \
 	-timeline                                $Timeline1 
 
@@ -529,7 +529,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     ?FrameResult?  \
+	-esm                                     ?FrameResult? \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -753,16 +753,16 @@ $my_ixNetDualPhyPlugin1 config \
 $Ethernet_2 childrenList.clear
 
 
-set MAC_VLAN_1 [::IxLoad new ixNetL2EthernetPlugin]
+set MAC_VLAN_2 [::IxLoad new ixNetL2EthernetPlugin]
 # ixNet objects needs to be added in the list before they are configured!
-$Ethernet_2 childrenList.appendItem -object $MAC_VLAN_1
+$Ethernet_2 childrenList.appendItem -object $MAC_VLAN_2
 
-$MAC_VLAN_1 childrenList.clear
+$MAC_VLAN_2 childrenList.clear
 
 
 set IP_2 [::IxLoad new ixNetIpV4V6Plugin]
 # ixNet objects needs to be added in the list before they are configured!
-$MAC_VLAN_1 childrenList.appendItem -object $IP_2
+$MAC_VLAN_2 childrenList.appendItem -object $IP_2
 
 $IP_2 childrenList.clear
 
@@ -773,10 +773,10 @@ $IP_2 extensionList.clear
 $IP_2 config \
 	-_Stale                                  false 
 
-$MAC_VLAN_1 extensionList.clear
+$MAC_VLAN_2 extensionList.clear
 
 
-$MAC_VLAN_1 config \
+$MAC_VLAN_2 config \
 	-_Stale                                  false 
 
 $Ethernet_2 extensionList.clear
@@ -809,7 +809,7 @@ $IP_2 rangeList.appendItem -object $IP_R2
 $IP_R2 config \
 	-count                                   1 \
 	-enableGatewayArp                        false \
-	-prefix                                  24 \
+	-prefix                                  16 \
 	-randomizeSeed                           3893034837 \
 	-generateStatistics                      false \
 	-autoCountEnabled                        false \
@@ -823,8 +823,8 @@ $IP_R2 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          "39.3.3.1" \
-	-ipAddress                               "39.3.3.2" \
+	-gatewayAddress                          "1.1.1.3" \
+	-ipAddress                               "1.1.1.2" \
 	-ipType                                  "IPv4" 
 
 set MAC_R2 [$IP_R2 getLowerRelatedRange "MacRange"]
@@ -1881,7 +1881,7 @@ $Traffic2_Network2 removeAllPortsFromAnalyzer
 ::IxLoad delete $my_ixNetDataCenterSettings
 ::IxLoad delete $my_ixNetEthernetELMPlugin
 ::IxLoad delete $my_ixNetDualPhyPlugin
-::IxLoad delete $MAC_VLAN_2
+::IxLoad delete $MAC_VLAN_1
 ::IxLoad delete $IP_1
 ::IxLoad delete $IP_R1
 ::IxLoad delete $MAC_R1
@@ -1909,7 +1909,7 @@ $Traffic2_Network2 removeAllPortsFromAnalyzer
 ::IxLoad delete $my_ixNetDataCenterSettings1
 ::IxLoad delete $my_ixNetEthernetELMPlugin1
 ::IxLoad delete $my_ixNetDualPhyPlugin1
-::IxLoad delete $MAC_VLAN_1
+::IxLoad delete $MAC_VLAN_2
 ::IxLoad delete $IP_2
 ::IxLoad delete $IP_R2
 ::IxLoad delete $MAC_R2

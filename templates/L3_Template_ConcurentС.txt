@@ -414,7 +414,7 @@ $Timeline1 config \
 	-standbyTime                             0 \
 	-rampDownValue                           0 \
 	-iterations                              1 \
-	-sustainTime                             130 \
+	-sustainTime                             ?TestTime? \
 	-timelineType                            0 
 
 $Activity_HTTPClient1 config \

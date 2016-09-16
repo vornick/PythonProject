@@ -1,7 +1,7 @@
 #################################################
 # IxLoad ScriptGen created TCL script
 # Test1 serialized using version 6.30.0.378
-# L2Through made on Jan 20 2016 18:08
+# L3Through made on Jan 20 2016 17:57
 #################################################
 
 #################################################
@@ -17,7 +17,7 @@ package require IxLoad
 if [catch {
 
 set logtag "IxLoad-api"
-set logName "1518"
+set logName "1400"
 set logger [::IxLoad new ixLogger $logtag 1]
 set logEngine [$logger getEngine]
 $logEngine setLevels $::ixLogger(kLevelDebug) $::ixLogger(kLevelInfo)
@@ -77,7 +77,7 @@ set Network1 [$Traffic1_Network1 cget -network]
 $Network1 portList.appendItem \
 	-chassisId 1 \
 	-cardId 1 \
-	-portId 6
+	-portId 7
 
 $Network1 globalPlugins.clear
 
@@ -321,7 +321,7 @@ set IP_R1 [::IxLoad new ixNetIpV4V6Range]
 $IP_1 rangeList.appendItem -object $IP_R1
 
 $IP_R1 config \
-	-count                                   1 \
+	-count                                   130 \
 	-enableGatewayArp                        false \
 	-prefix                                  16 \
 	-randomizeSeed                           50235888 \
@@ -337,16 +337,16 @@ $IP_R1 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          "1.1.1.2" \
-	-ipAddress                               "1.1.1.3" \
+	-gatewayAddress                          "154.1.1.1" \
+	-ipAddress                               "154.1.1.2" \
 	-ipType                                  "IPv4" 
 
 set MAC_R1 [$IP_R1 getLowerRelatedRange "MacRange"]
 
 $MAC_R1 config \
-	-count                                   1 \
+	-count                                   130 \
 	-enabled                                 true \
-	-mac                                     "00:01:01:01:03:00" \
+	-mac                                     "00:9A:01:01:02:00" \
 	-incrementBy                             "00:00:00:00:00:01" \
 	-netTraffic                              "Network1" \
 	-_Stale                                  false \
@@ -422,10 +422,10 @@ $Activity_HTTPClient1 config \
 	-name                                    "HTTPClient1" \
 	-userIpMapping                           "1:1" \
 	-enableConstraint                        false \
-	-userObjectiveValue                      100 \
-	-concurrentObjectiveBehavior             1 \
 	-constraintValue                         100 \
-	-userObjectiveType                       "concurrentConnections" \
+	-userObjectiveValue                      1000 \
+	-constraintType                          "SimulatedUserConstraint" \
+	-userObjectiveType                       "throughputMbps" \
 	-destinationIpMapping                    "Consecutive" \
 	-timeline                                $Timeline1 
 
@@ -529,7 +529,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     1460 \
+	-esm                                     1408 \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -586,7 +586,7 @@ set Network2 [$Traffic2_Network2 cget -network]
 $Network2 portList.appendItem \
 	-chassisId 1 \
 	-cardId 2 \
-	-portId 6
+	-portId 7
 
 $Network2 globalPlugins.clear
 
@@ -823,8 +823,8 @@ $IP_R2 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          "1.1.1.3" \
-	-ipAddress                               "1.1.1.2" \
+	-gatewayAddress                          "134.1.1.1" \
+	-ipAddress                               "134.1.1.2" \
 	-ipType                                  "IPv4" 
 
 set MAC_R2 [$IP_R2 getLowerRelatedRange "MacRange"]
@@ -1254,7 +1254,7 @@ $Activity_HTTPServer1 agent.config \
 	-enableMD5Checksum                       false \
 	-httpPort                                "80" \
 	-httpsPort                               "443" \
-	-esm                                     1460 \
+	-esm                                     1408 \
 	-enableTos                               0 \
 	-integrityCheckOption                    "Custom MD5" \
 	-flowPercentage                          100.0 \
@@ -1353,7 +1353,7 @@ $my_ixNetIpSessionData config \
 #################################################
 set testController [::IxLoad new ixTestController -outputDir True]
 
-$testController setResultDir "C:\\6\\Result\\TCP\\L2\\ConcurrentConnections\\100\\1518"
+$testController setResultDir C:\Result\TCP
 
 set NS statCollectorUtils
 
