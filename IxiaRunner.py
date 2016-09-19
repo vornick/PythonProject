@@ -33,7 +33,6 @@ def template_check(Template_File):
                 if chara == "?":
                     check += 1
                     numofline = lists.append(linenum)
-
                     break
 
     print("In Test file " + str(check) + " template words on lines", lists)

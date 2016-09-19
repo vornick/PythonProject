@@ -78,18 +78,24 @@ class Menu(object):
 
 
 class UserInput():
-    def PlatformChooser(self):
+    def PlatformChooser(TypeChoice,self):
         num_of_platform = input(
         "Введите тип платформы: IPC-"
         )
-        return num_of_platform
+        all_throughput_test_contain(TypeChoice, num_of_platform)
+        # return num_of_platform
     def portChooser(TypeChoice):
         print(none)
 
 class TestSteps():
     def test_choice(TypeChoice):
-        num_of_platform = UserInput()
-        num_of_platform.PlatformChooser()
+        # num_of_platform = UserInput()
+        # num_of_platform.PlatformChooser()
+        # num_of_platform = str(num_of_platform)
+        # print(num_of_platform)
+        num_of_platform = input(
+            "Введите тип платформы: IPC-"
+        )
         all_throughput_test_contain(TypeChoice, num_of_platform)
 
 Menu.first_menu(0)
