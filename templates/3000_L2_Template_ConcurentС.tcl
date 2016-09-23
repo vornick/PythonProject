@@ -1,14 +1,12 @@
 #################################################
 # IxLoad ScriptGen created TCL script
 # Test1 serialized using version 6.30.0.378
-# L3Through made on Jan 20 2016 17:57
+# L3_Template_Concurent—_3000.tcl made on Sep 23 2016 12:49
 #################################################
 
 #################################################
 # Copy content of setup_ixload_paths.tcl
 #################################################
-
-source {C:\Program Files (x86)\Ixia\IxLoad\6.30-EA\TclScripts\bin\IxiaWish.tcl}
 
 package require IxLoad
 
@@ -76,8 +74,28 @@ set Traffic1_Network1 [$scenarioElementFactory create $::ixScenarioElementType(k
 set Network1 [$Traffic1_Network1 cget -network]
 $Network1 portList.appendItem \
 	-chassisId 1 \
-	-cardId ?CardIdClient? \
-	-portId ?PortIdClient?
+	-cardId 1 \
+	-portId 2
+?Agregation_Resources?
+$Network1 portList.appendItem \
+	-chassisId 1 \
+	-cardId 1 \
+	-portId 6
+
+$Network1 portList.appendItem \
+	-chassisId 1 \
+	-cardId 1 \
+	-portId 9
+
+$Network1 portList.appendItem \
+	-chassisId 1 \
+	-cardId 1 \
+	-portId 10
+
+$Network1 portList.appendItem \
+	-chassisId 1 \
+	-cardId 1 \
+	-portId 12
 
 $Network1 globalPlugins.clear
 
@@ -239,7 +257,7 @@ $Network1 config \
 	-cpuAggregation                          false \
 	-name                                    "Network1" \
 	-lineSpeed                               "Default" \
-	-aggregation                             0 
+	-aggregation                             2 
 
 set Ethernet_1 [$Network1 getL1Plugin]
 
@@ -261,7 +279,7 @@ $my_ixNetEthernetELMPlugin config \
 
 set my_ixNetDualPhyPlugin [::IxLoad new ixNetDualPhyPlugin]
 $my_ixNetDualPhyPlugin config \
-	-medium                                  "?PortType?" \
+	-medium                                  "auto" \
 	-_Stale                                  false 
 
 $Ethernet_1 childrenList.clear
@@ -337,8 +355,8 @@ $IP_R1 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          ?GatewayClient? \
-	-ipAddress                               ?IPAdressClient? \
+	-gatewayAddress                          "1.1.1.2" \ \
+	-ipAddress                               "1.1.1.3" \
 	-ipType                                  "IPv4" 
 
 set MAC_R1 [$IP_R1 getLowerRelatedRange "MacRange"]
@@ -422,7 +440,7 @@ $Activity_HTTPClient1 config \
 	-name                                    "HTTPClient1" \
 	-userIpMapping                           "1:1" \
 	-enableConstraint                        false \
-	-userObjectiveValue                      ?ConcConnect? \
+	-userObjectiveValue                      ?ConcConnect?  \
 	-concurrentObjectiveBehavior             1 \
 	-constraintValue                         100 \
 	-userObjectiveType                       "concurrentConnections" \
@@ -585,8 +603,28 @@ set Traffic2_Network2 [$scenarioElementFactory create $::ixScenarioElementType(k
 set Network2 [$Traffic2_Network2 cget -network]
 $Network2 portList.appendItem \
 	-chassisId 1 \
-	-cardId ?CardIdServer? \
-	-portId ?PortIdServer?
+	-cardId 2 \
+	-portId 1
+?Agregation_Resources?
+$Network2 portList.appendItem \
+	-chassisId 1 \
+	-cardId 2 \
+	-portId 2
+
+$Network2 portList.appendItem \
+	-chassisId 1 \
+	-cardId 2 \
+	-portId 3
+
+$Network2 portList.appendItem \
+	-chassisId 1 \
+	-cardId 2 \
+	-portId 4
+
+$Network2 portList.appendItem \
+	-chassisId 1 \
+	-cardId 2 \
+	-portId 8
 
 $Network2 globalPlugins.clear
 
@@ -725,7 +763,7 @@ $Network2 config \
 	-cpuAggregation                          false \
 	-name                                    "Network2" \
 	-lineSpeed                               "Default" \
-	-aggregation                             0 
+	-aggregation                             2 
 
 set Ethernet_2 [$Network2 getL1Plugin]
 
@@ -747,7 +785,7 @@ $my_ixNetEthernetELMPlugin1 config \
 
 set my_ixNetDualPhyPlugin1 [::IxLoad new ixNetDualPhyPlugin]
 $my_ixNetDualPhyPlugin1 config \
-	-medium                                  "?PortType?" \
+	-medium                                  "auto" \
 	-_Stale                                  false 
 
 $Ethernet_2 childrenList.clear
@@ -807,7 +845,7 @@ set IP_R2 [::IxLoad new ixNetIpV4V6Range]
 $IP_2 rangeList.appendItem -object $IP_R2
 
 $IP_R2 config \
-	-count                                   1 \
+	-count                                   130 \
 	-enableGatewayArp                        false \
 	-prefix                                  16 \
 	-randomizeSeed                           3893034837 \
@@ -823,14 +861,14 @@ $IP_R2 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          ?GatewayServer? \
-	-ipAddress                               ?IPAdressServer? \
+	-gatewayAddress                          "1.1.1.3" \
+	-ipAddress                               "1.1.1.2" \
 	-ipType                                  "IPv4" 
 
 set MAC_R2 [$IP_R2 getLowerRelatedRange "MacRange"]
 
 $MAC_R2 config \
-	-count                                   1 \
+	-count                                   130 \
 	-enabled                                 true \
 	-mac                                     "60:48:07:A3:0C:00" \
 	-incrementBy                             "00:00:00:00:00:06" \
@@ -1304,10 +1342,10 @@ $Test1 config \
 	-name                                    "Test1" \
 	-statsRequired                           true \
 	-enableResetPorts                        false \
-	-statViewThroughputUnits                 "Mbps" \
-	-csvThroughputScalingFactor              1000000 \
-	-enableForceOwnership                    true \
-	-enableReleaseConfigAfterRun             true \
+	-statViewThroughputUnits                 "Gbps" \
+	-csvThroughputScalingFactor              1000 \
+	-enableForceOwnership                    false \
+	-enableReleaseConfigAfterRun             false \
 	-activitiesGroupedByObjective            false \
 	-enableNetworkDiagnostics                false \
 	-enableFrameSizeDistributionStats        false \

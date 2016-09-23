@@ -5,27 +5,19 @@
 		"?PortIdClient?": "7",
 		"?CardIdServer?": "2",
 		"?PortIdServer?": "7",
-		"?IPAdressClient?": "154.1.1.2",
-		"?GatewayClient?": "154.1.1.1",
-		"?IPAdressServer?": "134.1.1.2",
-		"?GatewayServer?": "134.1.1.1",
 		"?PortType?": "copper",
-        "?TestTime?": "130",
+	        "?TestTime?": "130",
 		"\"?ResultDir?\"": "C:\\Result\\TCP"
 	},
 
 
 	"?FrameResult?": {
 		"default": "1460",
-		"short_FW": "216,1240,1460",
-		"short_L3": "216,1240,1408,1460",
 		"short_L2":  "198,1222,1390,1460",
-		"long_FW": "216,472,984,1240,1460",
-		"long_L3": "216,472,984,1240,1460,1408",
 		"long_L2": "198,454,966,1222,1460,1390"
 	},
   		"test_cases": {
-         "case": "Standart,25,Reg",
+         "case": "Reg,Standart",
          "specific": "Throughput,ConcurentConnections",
           "concurent_connections": "1,16,100"
         }

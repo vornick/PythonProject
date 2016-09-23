@@ -337,8 +337,8 @@ $IP_R1 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          "154.1.1.1" \
-	-ipAddress                               "154.1.1.2" \
+	-gatewayAddress                          ?GatewayClient? \
+	-ipAddress                               ?IPAdressClient? \
 	-ipType                                  "IPv4" 
 
 set MAC_R1 [$IP_R1 getLowerRelatedRange "MacRange"]
@@ -823,8 +823,8 @@ $IP_R2 config \
 	-gatewayIncrementMode                    "perSubnet" \
 	-mss                                     1460 \
 	-randomizeAddress                        false \
-	-gatewayAddress                          "39.3.3.1" \
-	-ipAddress                               "39.3.3.2" \
+	-gatewayAddress                          ?GatewayServer? \
+	-ipAddress                               ?IPAdressServer? \
 	-ipType                                  "IPv4" 
 
 set MAC_R2 [$IP_R2 getLowerRelatedRange "MacRange"]

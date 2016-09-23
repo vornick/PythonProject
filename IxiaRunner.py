@@ -33,10 +33,12 @@ def template_check(Template_File):
                 if chara == "?":
                     check += 1
                     numofline = lists.append(linenum)
-
                     break
-
-    print("In Test file " + str(check) + " template words on lines", lists)
+    if check == 0:
+        print("Тестовый файл корректен, запускается тест")
+    else:
+        print("В тестовом файле " + str(check) + " не заполненных параметров в строках", lists + ", проверьте файл настроек или шаблон")
+        sys.exit(0)
     EndFile.close()
 
 def run_ixia_wish(folder_name, frame):
@@ -65,7 +67,7 @@ def run_ixia_wish(folder_name, frame):
 def test_function(folder_name, frame, Template_File):
     TclFile = open(Template_File, 'r')
                                                           #Блок тестирования создания заполненных конфигов.
-    TestResultFile = open('%s%s.tcl' % (folder_name, frame), 'w' )     #При раскоменчивании надо заккоментить вызов функции
+    TestResultFile = open('%s\%s.tcl' % (folder_name, frame), 'w' )     #При раскоменчивании надо заккоментить вызов функции
     for allline in TclFile:                                                        #run_ixia_wish выше и переменную testcase при вызове
         TestResultFile.write(allline)
     TclFile.close()

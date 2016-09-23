@@ -5,10 +5,10 @@
 		"?PortIdClient?": "7",
 		"?CardIdServer?": "2",
 		"?PortIdServer?": "7",
-		"?IPAdressClient?": "154.1.1.2",
-		"?GatewayClient?": "154.1.1.1",
-		"?IPAdressServer?": "134.1.1.2",
-		"?GatewayServer?": "134.1.1.1",
+		"?IPAdressClient?": "\"154.1.1.2\"",
+		"?GatewayClient?": "\"154.1.1.1\"",
+		"?IPAdressServer?": "\"134.1.1.2\"",
+		"?GatewayServer?": "\"134.1.1.1\"",
 		"?PortType?": "copper",
         "?TestTime?": "130",
 		"\"?ResultDir?\"": "C:\\Result\\TCP"
@@ -25,7 +25,7 @@
 		"long_L2": "198,454,966,1222,1460,1390"
 	},
   		"test_cases": {
-         "case": "Standart,25,Reg",
+         "case": "Reg,25,Standart",
          "specific": "Throughput,ConcurentConnections",
           "concurent_connections": "1,16,100"
         }
