@@ -17,7 +17,7 @@ package require IxLoad
 if [catch {
 
 set logtag "IxLoad-api"
-set logName "1518"
+set logName "512"
 set logger [::IxLoad new ixLogger $logtag 1]
 set logEngine [$logger getEngine]
 $logEngine setLevels $::ixLogger(kLevelDebug) $::ixLogger(kLevelInfo)
@@ -529,7 +529,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     1460 \
+	-esm                                     472 \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -1254,7 +1254,7 @@ $Activity_HTTPServer1 agent.config \
 	-enableMD5Checksum                       false \
 	-httpPort                                "80" \
 	-httpsPort                               "443" \
-	-esm                                     1460 \
+	-esm                                     472 \
 	-enableTos                               0 \
 	-integrityCheckOption                    "Custom MD5" \
 	-flowPercentage                          100.0 \
@@ -1353,10 +1353,7 @@ $my_ixNetIpSessionData config \
 #################################################
 set testController [::IxLoad new ixTestController -outputDir True]
 
-<<<<<<< HEAD
-$testController setResultDir "C:\\Result\\TCP\\1\\L3\\Reg\\1518"
-=======
-$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\1400"
+$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\512"
 
 set NS statCollectorUtils
 
@@ -1976,7 +1973,7 @@ package require IxLoad
 if [catch {
 
 set logtag "IxLoad-api"
-set logName "1400"
+set logName "512"
 set logger [::IxLoad new ixLogger $logtag 1]
 set logEngine [$logger getEngine]
 $logEngine setLevels $::ixLogger(kLevelDebug) $::ixLogger(kLevelInfo)
@@ -2488,7 +2485,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -3213,7 +3210,7 @@ $Activity_HTTPServer1 agent.config \
 	-enableMD5Checksum                       false \
 	-httpPort                                "80" \
 	-httpsPort                               "443" \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-enableTos                               0 \
 	-integrityCheckOption                    "Custom MD5" \
 	-flowPercentage                          100.0 \
@@ -3312,7 +3309,7 @@ $my_ixNetIpSessionData config \
 #################################################
 set testController [::IxLoad new ixTestController -outputDir True]
 
-$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\1400"
+$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\512"
 
 set NS statCollectorUtils
 
@@ -3932,7 +3929,7 @@ package require IxLoad
 if [catch {
 
 set logtag "IxLoad-api"
-set logName "1400"
+set logName "512"
 set logger [::IxLoad new ixLogger $logtag 1]
 set logEngine [$logger getEngine]
 $logEngine setLevels $::ixLogger(kLevelDebug) $::ixLogger(kLevelInfo)
@@ -4444,7 +4441,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -5169,7 +5166,7 @@ $Activity_HTTPServer1 agent.config \
 	-enableMD5Checksum                       false \
 	-httpPort                                "80" \
 	-httpsPort                               "443" \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-enableTos                               0 \
 	-integrityCheckOption                    "Custom MD5" \
 	-flowPercentage                          100.0 \
@@ -5268,7 +5265,7 @@ $my_ixNetIpSessionData config \
 #################################################
 set testController [::IxLoad new ixTestController -outputDir True]
 
-$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\1400"
+$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\512"
 
 set NS statCollectorUtils
 
@@ -5888,7 +5885,7 @@ package require IxLoad
 if [catch {
 
 set logtag "IxLoad-api"
-set logName "1400"
+set logName "512"
 set logger [::IxLoad new ixLogger $logtag 1]
 set logEngine [$logger getEngine]
 $logEngine setLevels $::ixLogger(kLevelDebug) $::ixLogger(kLevelInfo)
@@ -6400,7 +6397,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -7125,7 +7122,7 @@ $Activity_HTTPServer1 agent.config \
 	-enableMD5Checksum                       false \
 	-httpPort                                "80" \
 	-httpsPort                               "443" \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-enableTos                               0 \
 	-integrityCheckOption                    "Custom MD5" \
 	-flowPercentage                          100.0 \
@@ -7224,7 +7221,7 @@ $my_ixNetIpSessionData config \
 #################################################
 set testController [::IxLoad new ixTestController -outputDir True]
 
-$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\1400"
+$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\512"
 
 set NS statCollectorUtils
 
@@ -7844,7 +7841,7 @@ package require IxLoad
 if [catch {
 
 set logtag "IxLoad-api"
-set logName "1400"
+set logName "512"
 set logger [::IxLoad new ixLogger $logtag 1]
 set logEngine [$logger getEngine]
 $logEngine setLevels $::ixLogger(kLevelDebug) $::ixLogger(kLevelInfo)
@@ -8356,7 +8353,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -9081,7 +9078,7 @@ $Activity_HTTPServer1 agent.config \
 	-enableMD5Checksum                       false \
 	-httpPort                                "80" \
 	-httpsPort                               "443" \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-enableTos                               0 \
 	-integrityCheckOption                    "Custom MD5" \
 	-flowPercentage                          100.0 \
@@ -9180,7 +9177,7 @@ $my_ixNetIpSessionData config \
 #################################################
 set testController [::IxLoad new ixTestController -outputDir True]
 
-$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\1400"
+$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\512"
 
 set NS statCollectorUtils
 
@@ -9800,7 +9797,7 @@ package require IxLoad
 if [catch {
 
 set logtag "IxLoad-api"
-set logName "1400"
+set logName "512"
 set logger [::IxLoad new ixLogger $logtag 1]
 set logEngine [$logger getEngine]
 $logEngine setLevels $::ixLogger(kLevelDebug) $::ixLogger(kLevelInfo)
@@ -10312,7 +10309,7 @@ $Activity_HTTPClient1 agent.config \
 	-followHttpRedirects                     0 \
 	-tcpCloseOption                          0 \
 	-enableVlanPriority                      0 \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-httpVersion                             0 \
 	-enablesslRecordSize                     0 \
 	-enableHttpsTunnel                       0 \
@@ -11037,7 +11034,7 @@ $Activity_HTTPServer1 agent.config \
 	-enableMD5Checksum                       false \
 	-httpPort                                "80" \
 	-httpsPort                               "443" \
-	-esm                                     1408 \
+	-esm                                     472 \
 	-enableTos                               0 \
 	-integrityCheckOption                    "Custom MD5" \
 	-flowPercentage                          100.0 \
@@ -11136,8 +11133,7 @@ $my_ixNetIpSessionData config \
 #################################################
 set testController [::IxLoad new ixTestController -outputDir True]
 
-$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\1400"
->>>>>>> ff64fec240fb0c944921886bfef4a67170402f70
+$testController setResultDir "C:\\Result\\TCP\\1\\Reg\\512"
 
 set NS statCollectorUtils
 

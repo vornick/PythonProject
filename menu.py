@@ -73,6 +73,7 @@ class Menu(object):
             print("Введите номер теста")
         Menu.first_menu(0)
 
+<<<<<<< HEAD
         #
         # except ValueError:
         #     print("Некорректное значение, введите число от 0 до 4")# после окончания теста происходит перезапуск с выводо этой строчки
@@ -114,5 +115,28 @@ class TestSteps():
         print(TypeChoice)
         print(num_of_platform)
         TestChoice.all_throughput_test_contain(TypeChoice, num_of_platform)
+=======
+
+class UserInput():
+    def PlatformChooser(TypeChoice,self):
+        num_of_platform = input(
+        "Введите тип платформы: IPC-"
+        )
+        all_throughput_test_contain(TypeChoice, num_of_platform)
+        # return num_of_platform
+    def portChooser(TypeChoice):
+        print(none)
+
+class TestSteps():
+    def test_choice(TypeChoice):
+        # num_of_platform = UserInput()
+        # num_of_platform.PlatformChooser()
+        # num_of_platform = str(num_of_platform)
+        # print(num_of_platform)
+        num_of_platform = input(
+            "Введите тип платформы: IPC-"
+        )
+        all_throughput_test_contain(TypeChoice, num_of_platform)
+>>>>>>> ff64fec240fb0c944921886bfef4a67170402f70
 
 Menu.first_menu(0)
